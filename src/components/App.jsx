@@ -15,7 +15,7 @@ export const App = () => {
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
-  giveFeedbackHandler = e => {
+  const giveFeedbackHandler = e => {
     const { name } = e.target;
     switch (name) {
       case options[0]:
@@ -32,10 +32,10 @@ export const App = () => {
     }
   };
 
-  countTotalFeedback = () => {
+  const countTotalFeedback = () => {
     return bad + good + neutral;
   };
-  countPositiveFeedbackPercentage = () => {
+  const countPositiveFeedbackPercentage = () => {
     return Math.round(Number(good / (bad + good + neutral)) * 100);
   };
 
@@ -45,7 +45,7 @@ export const App = () => {
     <Container>
       <Section title="Please leave feedback">
         <FeedbackOptions
-          onLeaveFeedback={giveFeedbackHandler()}
+          onLeaveFeedback={giveFeedbackHandler}
           options={options}
           output={output}
         ></FeedbackOptions>
