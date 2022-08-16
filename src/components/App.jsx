@@ -5,30 +5,24 @@ import { Section } from './Section/Section';
 import { Notification } from './Notofication/Notofication';
 import { Container } from './App.styled';
 export const App = () => {
-  const output = {
-    good: 'Good',
-    neutral: 'Neutral',
-    bad: 'Bad',
-  };
-  const options = ['good', 'neutral', 'bad'];
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
 
   const giveFeedbackHandler = e => {
-    const { name } = e.target;
-    switch (name) {
-      case options[0]:
+    const option = e.target.name;
+    switch (option) {
+      case 'good':
         setGood(state => state + 1);
         break;
-      case options[1]:
+      case 'neutral':
         setNeutral(state => state + 1);
         break;
-      case options[2]:
+      case 'bad':
         setBad(state => state + 1);
         break;
       default:
-        throw new Error('Unsupported option type: ' + name);
+        break;
     }
   };
 
@@ -46,8 +40,7 @@ export const App = () => {
       <Section title="Please leave feedback">
         <FeedbackOptions
           onLeaveFeedback={giveFeedbackHandler}
-          options={options}
-          output={output}
+          options={['good', 'neutral', 'bad']}
         ></FeedbackOptions>
       </Section>
       <Section title="Statistics">
